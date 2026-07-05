@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sherwin Ramos — BSIT Graduate &amp; Web Developer</title>
+<meta name="description" content="Portfolio of Sherwin Ramos, BSIT graduate from Pangasinan State University - Lingayen Campus." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="crosshair" id="crosshair" aria-hidden="true">
+  <span class="crosshair__h"></span>
+  <span class="crosshair__v"></span>
+</div>
+
+<!-- ===== Nav — styled as a drawing set index ===== -->
+<header class="topbar">
+  <div class="topbar__inner wrap">
+    <a href="#top" class="mark">
+      <span class="mark__box">SR</span>
+      <span class="mark__text">PORTFOLIO&nbsp;SET</span>
+    </a>
+
+    <nav class="sheetnav" id="primaryNav" aria-label="Primary">
+      <a href="#about" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;01</span>About</a>
+      <a href="#skills" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;02</span>Skills</a>
+      <a href="#showcase" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;03</span>Showcase</a>
+      <a href="#projects" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;04</span>Projects</a>
+      <a href="#certifications" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;05</span>Certifications</a>
+      <a href="#log" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;06</span>History</a>
+      <a href="#contact" class="sheet-tab" data-nav><span class="sheet-tab__id">A&#8209;07</span>Contact</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== COVER SHEET / HERO ===== -->
+  <section class="cover" id="hero">
+    <div class="cover__reg cover__reg--tl" aria-hidden="true"></div>
+    <div class="cover__reg cover__reg--tr" aria-hidden="true"></div>
+    <div class="cover__reg cover__reg--bl" aria-hidden="true"></div>
+    <div class="cover__reg cover__reg--br" aria-hidden="true"></div>
+
+    <div class="wrap cover__inner">
+      <div class="cover__copy">
+        <p class="sheet-label">Sheet 00 &mdash; Cover</p>
+        <h1 class="cover__name">Sherwin<br>Ramos</h1>
+
+        <div class="dimline reveal-line" data-anim="dimline">
+          <span class="dimline__cap"></span>
+          <span class="dimline__bar"></span>
+          <span class="dimline__label">BSIT Graduate &mdash; Web &amp; Systems Developer</span>
+          <span class="dimline__bar"></span>
+          <span class="dimline__cap"></span>
+        </div>
+
+        <p class="cover__desc">
+          Fresh graduate of Pangasinan State University &ndash; Lingayen Campus. I design,
+          document, and build practical systems &mdash; from database schema to finished
+          interface &mdash; the same way an engineer drafts a plan before construction.
+        </p>
+
+        <div class="cover__actions">
+          <a href="#projects" class="btn btn--primary">View projects</a>
+          <a href="files/Ramos_Sherwin T. Resume.pdf" class="btn btn--outline" download>Download CV</a>
+        </div>
+      </div>
+
+      <div class="cover__plate">
+        <div class="cover__image">
+          <img src="files/Sherwin.jpg" alt="Sherwin Ramos" class="cover__photo" />
+        </div>
+        <p class="plate__caption">FIG. 01 &mdash; PROFILE PLATE</p>
+      </div>
+    </div>
+
+    <div class="ruler" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="sheet" id="about">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 01 &mdash; About</p>
+        <h2 class="sheet__title">Profile</h2>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__plate reveal">
+          <div class="idplate">
+            <img src="files/Sherwin1.jpg" alt="Sherwin Ramos" class="idplate__image" />
+            <span class="idplate__reg idplate__reg--tl"></span>
+            <span class="idplate__reg idplate__reg--tr"></span>
+            <span class="idplate__reg idplate__reg--bl"></span>
+            <span class="idplate__reg idplate__reg--br"></span>
+          </div>
+          <p class="idplate__caption">FIG. 02 &mdash; PROFILE PLATE</p>
+        </div>
+
+        <div class="about__copy reveal">
+          <p>
+            I'm Sherwin Ramos, a Bachelor of Science in Information Technology graduate
+            from <strong>Pangasinan State University &ndash; Lingayen Campus</strong>. I enjoy
+            taking a manual, paper-based process and turning it into a system that's simple
+            enough that no one needs a manual to use it.
+          </p>
+          <p>
+            Through school projects and training, I've worked across the stack &mdash;
+            planning the database, writing the back-end logic, and shaping the interface a
+            real person interacts with. I'm now looking for a junior developer role where I
+            can keep building and keep learning.
+          </p>
+
+          <ul class="legend">
+            <li><span class="legend__num">01</span><span class="legend__label">Location</span><span class="legend__dots"></span><span class="legend__value">Pangasinan, Philippines</span></li>
+            <li><span class="legend__num">02</span><span class="legend__label">Degree</span><span class="legend__dots"></span><span class="legend__value">BS Information Technology</span></li>
+            <li><span class="legend__num">03</span><span class="legend__label">Focus</span><span class="legend__dots"></span><span class="legend__value">Web &amp; Mobile Development</span></li>
+            <li><span class="legend__num">04</span><span class="legend__label">Status</span><span class="legend__dots"></span><span class="legend__value">Open to work</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS — Bill of Materials ===== -->
+  <section class="sheet sheet--alt" id="skills">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 02 &mdash; Skills</p>
+        <h2 class="sheet__title">Bill of materials</h2>
+        <p class="sheet__note">Tools and languages I build with, listed the way a drawing lists its parts.</p>
+      </div>
+
+      <div class="bom reveal">
+        <div class="bom__row bom__row--head">
+          <span>Item</span>
+          <span>Category</span>
+          <span>Proficiency</span>
+        </div>
+        <div class="bom__body" id="bomBody"><!-- rows injected by script.js --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOWCASE ===== -->
+  <section class="sheet" id="showcase">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 03 &mdash; Showcase</p>
+        <h2 class="sheet__title">Showcase</h2>
+        <p class="sheet__note">A gallery of my Achievements.</p>
+      </div>
+
+      <div class="showcase reveal" id="showcaseCarousel">
+        <div class="showcase__track" id="showcaseTrack"><!-- slides injected by script.js --></div>
+        <div class="showcase__controls">
+          <button class="btn" id="showcasePrev" aria-label="Previous">‹</button>
+          <button class="btn" id="showcaseNext" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="sheet" id="projects">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 04 &mdash; Projects</p>
+        <h2 class="sheet__title">Project plates</h2>
+        <p class="sheet__note">Projects I've worked on.</p>
+      </div>
+
+      <div class="view-toggle reveal" id="filters">
+        <button class="view-btn is-active" data-filter="all">All</button>
+        <button class="view-btn" data-filter="web">Web</button>
+        <button class="view-btn" data-filter="desktop">Desktop</button>
+        <button class="view-btn" data-filter="mobile">Mobile</button>
+        <button class="view-btn" data-filter="database">Database</button>
+      </div>
+
+      <div class="plates" id="projectsGrid"><!-- rendered by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section class="sheet sheet--alt" id="certifications">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 05 &mdash; Certifications</p>
+        <h2 class="sheet__title">Certification plates</h2>
+        <p class="sheet__note">Certifications and achievements.</p>
+      </div>
+
+      <div class="plates" id="certificationsGrid"><!-- rendered by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ===== HISTORY — Revision table ===== -->
+  <section class="sheet sheet--alt" id="log">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 06 &mdash; History</p>
+        <h2 class="sheet__title">Revision history</h2>
+        <p class="sheet__note">Education and experience.</p>
+      </div>
+
+      <div class="revtable reveal">
+        <div class="revtable__row revtable__row--head">
+          <span>Rev</span>
+          <span>Date</span>
+          <span>Description</span>
+        </div>
+        <div class="revtable__body" id="logList"><!-- rendered by script.js --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / TITLE BLOCK ===== -->
+  <section class="sheet" id="contact">
+    <div class="wrap">
+      <div class="sheet__head reveal">
+        <p class="sheet-label">Sheet 07 &mdash; Contact</p>
+        <h2 class="sheet__title">Connect with me</h2>
+      </div>
+
+      <div class="titleblock reveal">
+        <div class="titleblock__info">
+          <div class="tb-row"><span class="tb-row__label">Drawn by</span><span class="tb-row__value">Sherwin Ramos</span></div>
+          <div class="tb-row"><span class="tb-row__label">Status</span><span class="tb-row__value tb-row__value--stamp">Open to work</span></div>
+          <div class="tb-row"><span class="tb-row__label">Scale</span><span class="tb-row__value">1:1</span></div>
+          <div class="tb-row"><span class="tb-row__label">Sheet</span><span class="tb-row__value">05 of 05</span></div>
+
+          <ul class="contact__list">
+            <li>
+              <span>Email</span>
+              <span class="contact__value">sr333700@gmail.com</span>
+              <button class="copy-btn" data-copy="sr333700@gmail.com" type="button">Copy</button>
+            </li>
+            <li><span>Phone</span><span class="contact__value">+639509973268</span></li>
+            <li><span>Location</span><span class="contact__value">Pangasinan, Philippines</span></li>
+          </ul>
+
+          <div class="socials">
+            <a href="https://github.com/SherPsu" class="social" aria-label="GitHub profile" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.6.5.5 5.7.5 12.1c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2A11 11 0 0 1 12 6.1c1 0 2.1.1 3 .4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.5 5.7 18.4.5 12 .5Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sherwin-ramos-477844267/" class="social" aria-label="LinkedIn profile" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2 3.77-2 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21h-4V9Z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sherwinity69/" class="social" aria-label="Facebook profile" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.2h2.4l.4-2.8h-2.8V9.1c0-.8.2-1.4 1.4-1.4h1.5V5.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1v2.8h2.4V21h3Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <form class="rfi" id="contactForm" novalidate>
+          <p class="rfi__title">Request for information</p>
+
+          <label class="field">
+            <span class="field__label">Name</span>
+            <input type="text" name="name" id="fieldName" placeholder="Juan Dela Cruz" autocomplete="name" />
+            <span class="field__error">Please enter your name.</span>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input type="email" name="email" id="fieldEmail" placeholder="juan@email.com" autocomplete="email" />
+            <span class="field__error">Please enter a valid email.</span>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Message</span>
+            <textarea name="message" id="fieldMessage" rows="4" placeholder="Tell me about the role or project..."></textarea>
+            <span class="field__error">Please write a short message.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary rfi__submit">Submit request</button>
+          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p>&copy; <span id="year"></span> Sherwin Ramos &mdash; drawn with HTML, CSS &amp; JavaScript.</p>
+    <button class="to-top" id="toTop" aria-label="Back to top">&uarr; Top</button>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="certModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+    <button class="modal__close" id="certModalClose" aria-label="Close certificate preview">×</button>
+    <h2 id="certModalTitle" class="modal__title">Certificate preview</h2>
+    <div class="modal__content">
+      <img id="certModalImage" class="modal__image" src="" alt="" />
+      <p id="certModalCaption" class="modal__caption"></p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
