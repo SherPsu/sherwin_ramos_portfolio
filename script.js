@@ -360,6 +360,11 @@ function renderLog() {
    --------------------------------------------------------- */
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const _urlParams = new URLSearchParams(window.location.search);
+const forceAnimate = _urlParams.get('anim') === '1' || _urlParams.get('anim') === 'true';
+if (forceAnimate) console.info('Animations forced via URL param `?anim=1`');
+const savedAllow = localStorage.getItem('allowAnimations') === '1';
+if (savedAllow) console.info('Animations enabled via localStorage allowAnimations=1');
 
 // Mobile nav toggle
 const navToggle = document.getElementById("navToggle");
@@ -522,14 +527,17 @@ contactForm.addEventListener("submit", async (e) => {
   }
 });
 
-// Back to top
+// Back to top (guard when footer/button removed)
 const toTopBtn = document.getElementById("toTop");
-toTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-});
+if (toTopBtn) {
+  toTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  });
+}
 
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+// Footer year (guard if footer removed)
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Crosshair cursor accent (desktop only, purely cosmetic)
 const crosshair = document.getElementById("crosshair");
@@ -592,3 +600,100 @@ observeReveals();
 animateBomDots();
 drawSvgOnLoad();
 drawDimline();
+
+// Trigger page-level entrance animations if user allows motion
+const shouldAnimate = !prefersReducedMotion || forceAnimate || savedAllow;
+if (shouldAnimate) {
+  setTimeout(() => document.body.classList.add('page-animated'), 600);
+} else {
+  // add a small toggle so you can enable animations from the page (respects user's choice thereafter)
+  const topbarInner = document.querySelector('.topbar__inner');
+  if (topbarInner) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'animToggle';
+    btn.className = 'btn';
+    btn.textContent = 'Enable animations';
+    btn.style.marginLeft = '0.5rem';
+    btn.addEventListener('click', () => {
+      localStorage.setItem('allowAnimations', '1');
+      document.body.classList.add('page-animated');
+      try { loopTypeCoverName(); } catch (e) { console.error(e); }
+      btn.remove();
+    });
+    topbarInner.appendChild(btn);
+  }
+}
+
+// Typing animation for cover name (loop: type -> pause -> erase -> repeat)
+function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
+async function loopTypeCoverName() {
+  const el = document.getElementById('typingText');
+  const text = "Hi I'm Sherwin T. Ramos";
+  if (!el) return;
+  // Respect OS reduced-motion unless explicitly overridden by URL or localStorage
+  if (prefersReducedMotion && !forceAnimate && !savedAllow) {
+    el.textContent = text;
+    return;
+  }
+
+  const typeDelay = 80; // ms per char when typing
+  const backDelay = 40; // ms per char when erasing
+  const pauseAfter = 1200; // pause after full text typed
+
+  while (true) {
+    // type
+    el.textContent = '';
+    for (let i = 0; i < text.length; i++) {
+      el.textContent += text[i];
+      await sleep(typeDelay);
+    }
+    await sleep(pauseAfter);
+
+    // erase
+    for (let i = text.length; i > 0; i--) {
+      el.textContent = el.textContent.slice(0, i - 1);
+      await sleep(backDelay);
+    }
+    await sleep(400);
+  }
+}
+
+// start looping typing shortly after page animations begin
+if (!prefersReducedMotion) {
+  setTimeout(loopTypeCoverName, 900);
+} else {
+  loopTypeCoverName();
+}
+
+// More robust start: if typing didn't begin (e.g. element not in DOM yet or off-screen), start when cover becomes visible
+let _typingStarted = false;
+function _startTypingIfNeeded() {
+  if (_typingStarted) return;
+  const el = document.getElementById('typingText');
+  if (!el) return;
+  _typingStarted = true;
+  // If loopTypeCoverName already scheduled, it will run; otherwise start immediately
+  if (prefersReducedMotion) {
+    el.textContent = "Hi I'm Sherwin T. Ramos";
+  } else {
+    // ensure loop is running
+    try { loopTypeCoverName(); } catch (e) { /* ignore */ }
+  }
+}
+
+const coverEl = document.getElementById('hero');
+if (coverEl && typeof IntersectionObserver !== 'undefined') {
+  const obs = new IntersectionObserver((entries, o) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        _startTypingIfNeeded();
+        o.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  obs.observe(coverEl);
+} else {
+  // fallback: try starting after brief delay
+  setTimeout(_startTypingIfNeeded, 1200);
+}

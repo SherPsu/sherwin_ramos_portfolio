@@ -108,6 +108,7 @@ code {
   align-items: center;
   gap: 2rem;
 }
+#animToggle { background: var(--blue); color: #fff; border: none; padding: 0.45rem 0.7rem; border-radius: 4px; font-weight: 600; }
 .mark { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
 .mark__box {
   font-family: var(--mono);
@@ -813,6 +814,69 @@ code {
   .sheet-tab { border-bottom: 1px solid var(--line); border-radius: 0; padding: 0.9rem 0.2rem; }
 
   .cover { padding: 4rem 0 2.5rem; }
+/* ---------- Micro-animations ---------- */
+@keyframes photoFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes ctaPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes platePop {
+  from { opacity: 0; transform: translateY(8px) scale(0.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Nav underline */
+.sheet-tab { position: relative; }
+.sheet-tab::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -6px;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+.sheet-tab:hover::after, .sheet-tab.is-active::after { transform: scaleX(1); }
+
+/* Cover photo float (only when page animations allowed) */
+body.page-animated .cover__photo { animation: photoFloat 6s ease-in-out infinite; will-change: transform; }
+
+/* CTA pulse on entrance */
+body.page-animated .btn--primary { animation: ctaPulse 2.8s ease 0.6s 1; }
+
+/* Plates hover lift and small entrance */
+.plate { transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease); }
+.plate:hover { transform: translateY(-6px); box-shadow: 0 18px 40px -22px rgba(29,78,137,0.4); }
+body.page-animated .plate.reveal.is-visible { animation: platePop 0.45s var(--ease); }
+
+/* Social icon micro-rotation */
+.social svg { transition: transform 0.28s var(--ease); }
+.social:hover svg { transform: rotate(-12deg) scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-animated .cover__photo,
+  body.page-animated .btn--primary,
+  body.page-animated .plate.reveal.is-visible { animation: none !important; }
+}
+
+/* Typing animation for cover name */
+.typing-text { white-space: nowrap; display: inline-block; font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 5vw, 3.6rem); color: var(--ink); }
+.typing-caret { display: inline-block; margin-left: 6px; color: var(--blue); font-weight: 700; font-family: var(--display); font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1; vertical-align: bottom; }
+@keyframes caretBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+.typing-caret { animation: caretBlink 1s steps(1,end) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .typing-caret { animation: none; opacity: 1; }
+}
   .sheet { padding: 3.5rem 0; }
   .bom__row, .bom__row--head { grid-template-columns: 1.4fr 1fr 1fr; font-size: 0.85rem; }
   .revtable__row, .revtable__row--head { grid-template-columns: 60px 1fr; }
